@@ -22,7 +22,7 @@ This script automates the installation of system packages and Python modules, wh
 
 ### 1. Download the script and make it executable
 ```bash
-curl -O https://github.com/qapdex-maker/termux-notes/scripts/satisfy-torch/satisfy_torch.sh
+curl -O https://github.com/qapdex-maker/termux-notes/blob/main/scripts/satisfy-torch/satisfy_torch.sh
 chmod +x satisfy_torch.sh
 ```
 
