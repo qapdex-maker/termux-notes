@@ -45,3 +45,58 @@ vulkaninfo --summary
 ---
 
 *Expected Output:* `deviceName = Turnip Adreno (TM) XXX`.
+```
+==========
+VULKANINFO
+==========
+
+Vulkan Instance Version: 1.4.355
+
+
+Instance Extensions: count = 25
+-------------------------------
+VK_EXT_acquire_drm_display             : extension revision 1
+VK_EXT_acquire_xlib_display            : extension revision 1
+VK_EXT_debug_report                    : extension revision 10
+VK_EXT_debug_utils                     : extension revision 2
+VK_EXT_direct_mode_display             : extension revision 1
+VK_EXT_display_surface_counter         : extension revision 1
+VK_EXT_headless_surface                : extension revision 1
+VK_EXT_surface_maintenance1            : extension revision 1
+VK_EXT_swapchain_colorspace            : extension revision 5
+VK_KHR_device_group_creation           : extension revision 1
+VK_KHR_display                         : extension revision 23
+VK_KHR_external_fence_capabilities     : extension revision 1
+VK_KHR_external_memory_capabilities    : extension revision 1
+VK_KHR_external_semaphore_capabilities : extension revision 1
+VK_KHR_get_display_properties2         : extension revision 1
+VK_KHR_get_physical_device_properties2 : extension revision 2
+VK_KHR_get_surface_capabilities2       : extension revision 1
+VK_KHR_portability_enumeration         : extension revision 1
+VK_KHR_surface                         : extension revision 25
+VK_KHR_surface_maintenance1            : extension revision 1
+VK_KHR_surface_protected_capabilities  : extension revision 1
+VK_KHR_wayland_surface                 : extension revision 6
+VK_KHR_xcb_surface                     : extension revision 6
+VK_KHR_xlib_surface                    : extension revision 6
+VK_LUNARG_direct_driver_loading        : extension revision 1
+
+Instance Layers:
+----------------
+
+Devices:
+========
+GPU0:
+        apiVersion         = 1.3.335
+        driverVersion      = 26.0.6
+        vendorID           = 0x5143
+        deviceID           = 0x6050002
+        deviceType         = PHYSICAL_DEVICE_TYPE_INTEGRATED_GPU
+        deviceName         = Turnip Adreno (TM) 650
+        driverID           = DRIVER_ID_MESA_TURNIP
+        driverName         = turnip Mesa driver
+        driverInfo         = Mesa 26.0.6
+        conformanceVersion = 1.2.7.1
+        deviceUUID         = 91d356f6-9667-d5ab-ba50-f1ef4a6826ce
+        driverUUID         = 9f34bcc0-96d4-b6c4-5010-ea16c686a97b
+```
