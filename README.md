@@ -1,2 +1,2 @@
 # termux-notes
-*For informational purpose only
+*All files are for testing purposes only. 
