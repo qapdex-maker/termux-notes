@@ -1,4 +1,4 @@
-# Adreno-Vulkan Termux Driver
+# Adreno-Vulkan (Turnip Adreno/Mesa) Termux Driver
 
 ---
 
@@ -44,6 +44,26 @@ vulkaninfo --summary
 
 ---
 
+```
+# --- Adreno Vulkan ---
+export VK_ICD_FILENAMES="$PREFIX/share/vulkan/icd.d/freedreno_icd.aarch64.json"
+export GGML_VK_COMPUTE_OCCUPANCY_PRIORITY=high
+export GGML_VK_PREFER_HOST_MEMORY=1
+export DISPLAY=:1
+export GALLIUM_DRIVER=zink
+export MESA_NO_ERROR=1
+export vblank_mode=0
+export MESA_GLSL_CACHE_DISABLE=0
+export MESA_SHADER_CACHE_DISABLE=0
+export MESA_SHADER_CACHE_MAX_SIZE=2G
+export mesa_glthread=true
+export ZINK_DESCRIPTORS=lazy
+# export MESA_VK_WSI_PRESENT_MODE=mailbox
+export MESA_VK_WSI_PRESENT_MODE=immediate
+export MESA_SPIRV_LOG_LEVEL=info
+export ASAN_OPTIONS=allow_user_segv_handler=1
+# --- Adreno Vulkan export
+```
 *Expected Output:* `deviceName = Turnip Adreno (TM) XXX`.
 ```
 ==========
@@ -80,10 +100,10 @@ VK_KHR_wayland_surface                 : extension revision 6
 VK_KHR_xcb_surface                     : extension revision 6
 VK_KHR_xlib_surface                    : extension revision 6
 VK_LUNARG_direct_driver_loading        : extension revision 1
-
+```
 Instance Layers:
 ----------------
-
+```
 Devices:
 ========
 GPU0:
