@@ -30,7 +30,7 @@ pkg install spirv-headers -y
 pkg install switshader -y
 pkg install mesa-vulkan-icd-swrast -y
 pkg install tur-repo -y
-pkg update
+pkg update -y
 pkg install mesa-vulkan-icd-freedreno -y
 
 find /system /vendor -name "*vk*.json" 2>/dev/null
