@@ -39,8 +39,11 @@ export ASAN_OPTIONS=allow_user_segv_handler=1
 export EXECUTABLE_DISABLE_MTE=1
 
 glslc --version
-vulkaninfo --summary
 ```
+
+## Restart everything. Then: glslc --version && vulkaninfo --summary
+
+*Expected Output:* `deviceName = Turnip Adreno (TM) XXX`.
 
 ---
 
@@ -64,7 +67,9 @@ export MESA_SPIRV_LOG_LEVEL=info
 export ASAN_OPTIONS=allow_user_segv_handler=1
 # --- Adreno Vulkan export
 ```
-*Expected Output:* `deviceName = Turnip Adreno (TM) XXX`.
+
+---
+
 ```
 ==========
 VULKANINFO
@@ -100,10 +105,10 @@ VK_KHR_wayland_surface                 : extension revision 6
 VK_KHR_xcb_surface                     : extension revision 6
 VK_KHR_xlib_surface                    : extension revision 6
 VK_LUNARG_direct_driver_loading        : extension revision 1
-```
+
 Instance Layers:
 ----------------
-```
+
 Devices:
 ========
 GPU0:
