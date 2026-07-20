@@ -1,0 +1,150 @@
+# termux-chroot
+if [ -z "$TERMUX_CHROOT_ACTIVE" ]; then
+    export TERMUX_CHROOT_ACTIVE=1
+    exec termux-chroot
+fi
+# termux-root export
+which glslc
+vulkaninfo --summary
+fastfetch
+export PATH=~/.npm-global/bin:$PATH
+
+export PATH=$PATH:$HOME/shaderc/build/glslc/
+
+# --- Android API-Level ---
+if command -v getprop >/dev/null 2>&1; then
+    export ANDROID_API_LEVEL="$(getprop ro.build.version.sdk)"
+# --- Android Api-Level export
+
+# --- System Scan ---
+#if grep -qi termux /proc/version || [ -d "$(getprop ro.build.version.sdk)" ]; then
+  PLATFORM="termux"
+else
+  PLATFORM="linux"
+fi
+
+echo "System: $PLATFORM"
+echo
+# ---
+
+# --- pnpm ---
+export PNPM_HOME="/data/data/com.termux/files/home/.local/share/pnpm"
+case ":$PATH:" in
+  *":$PNPM_HOME:"*) ;;
+  *) export PATH="$PNPM_HOME:$PATH" ;;
+esac
+
+# --- pnpm
+
+# >>> Codex installer >>>
+export PATH="/data/data/com.termux/files/home/.local/bin:$PATH"
+# <<< Codex installer <<<
+
+# --- uv ---
+export UV_PYTHON_PREFERENCE="only-system"
+export CRYPTOGRAPHY_DONT_BUILD_RUST=1
+export CARGO_BUILD_TARGET="$(uname -m)-linux-android"
+export UV_CONCURRENCY=1
+export OMP_NUM_THREADS=1
+export MKL_NUM_THREADS=1
+export OPENBLAS_NUM_THREADS=1
+# --- uv export
+
+# --- bun ---
+export BUN_INSTALL="$HOME/.bun"
+export PATH="$BUN_INSTALL/bin:$PATH"
+# --- bun export
+
+# --- tmp dir ---
+export TMPDIR="$PREFIX/tmp"
+export TEMP="$PREFIX/tmp"
+export TMP="$PREFIX/tmp"
+# --- tmp export
+
+# --- KMP Affinity ---
+export KMP_AFFINITY="disabled"
+# --- KMP export
+
+# --- Adreno Vulkan ---
+export VK_ICD_FILENAMES="$PREFIX/share/vulkan/icd.d/freedreno_icd.aarch64.json"
+export GGML_VK_COMPUTE_OCCUPANCY_PRIORITY=high
+export GGML_VK_PREFER_HOST_MEMORY=true
+# export DISPLAY=:1
+GALLIUM_DRIVER=zink
+export MESA_NO_ERROR=1
+export vblank_mode=0
+export MESA_GLSL_CACHE_DISABLE=false
+export MESA_SHADER_CACHE_DISABLE=false
+export MESA_SHADER_CACHE_MAX_SIZE=1G
+export mesa_glthread=true
+export ZINK_DESCRIPTORS=lazy
+# export MESA_VK_WSI_PRESENT_MODE=mailbox
+export MESA_VK_WSI_PRESENT_MODE=immediate
+export MESA_SPIRV_LOG_LEVEL=warn
+  echo $MESA_VK_WSI_PRESENT_MODE
+echo
+# --- Adreno Vulkan export
+
+[ -f ~/.spawnrc ] && source ~/.spawnrc
+
+# --- Fixes (nur Termux) ---
+if [ "$PLATFORM" = "termux" ]; then
+  echo "Termux PREFIXE"
+  ln -sf /system/lib64/liblog.so $PREFIX/lib/liblog.so 2>/dev/null || true
+  export LDFLAGS="-llog"
+  export CXXFLAGS="-fPIC"
+  export CPPFLAGS="-I$PREFIX/include"
+  export PKG_CONFIG_PATH="$PREFIX/lib/pkgconfig:$PKG_CONFIG_PATH"
+  export CFLAGS=${CFLAGS:-"-O2 -pipe"}
+  export LDFLAGS=${LDFLAGS:-"-L/data/data/com.termux/files/usr/lib"}
+fi
+# --- Python ---
+export LD_LIBRARY_PATH= LD_LIBRARY_PATH
+find $PREFIX -name "libllama*.so" -o -name "libggml*.so"
+find $PREFIX -type f -name "llama-server" -o -name "llama-cli"
+export PATH="$PATH:/home/.local/bin:/home/.local/share/soar/bin"
+DABSL_BUILD_TESTING=ON
+DABSL_USE_GOOGLETEST_HEAD=ON
+DCMAKE_CXX_STANDARD=17
+python3 -m pip install --prefer-binary "numpy==1.26.4"
+python3 -m pip install --no-binary=tokenizers tokenizers
+python3 -m pip install --no-cache-dir --no-binary=:all: matplotlib
+python3 -m pip install --no-cache-dir --no-binary=:all: pillow
+cat > $PREFIX/lib/python3.13/site-packages/torch.py <<'PY'
+
+# --- Namespaces ---
+import types
+torch = types.SimpleNamespace()
+torch.__version__ = "0+stub"
+PY
+# --- Create stub
+STUB="${PY_SITE}/torch.py"
+if [ ! -f "$STUB" ]; then
+  echo "Creating minimal torch stub at $STUB"
+  mkdir -p "$(dirname "$STUB")"
+  cat > "$STUB" <<'PY'
+
+
+# --- Only used to satisfy import checks. Not for real torch functionality. ---
+class _Dummy:
+    def __getattr__(self, name):
+        raise ImportError("PyTorch is not installed on this device. This is a stub.")
+import types
+torch = types.SimpleNamespace()
+torch.__version__ = "0+stub"
+torch.Tensor = _Dummy
+torch.nn = _Dummy
+torch.optim = _Dummy
+torch.cuda = _Dummy
+PY
+else
+  echo "Torch stub already exists at $STUB"
+fi
+
+echo "Done"
+#
+echo
+export PATH="$HOME/bin:$PATH"
+echo
+echo "====={☆}=====" 
+ulimit
