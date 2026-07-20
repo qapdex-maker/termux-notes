@@ -85,9 +85,11 @@ export MESA_SPIRV_LOG_LEVEL=warn
 echo
 # --- Adreno Vulkan export
 
+# --- OpenRouter Spawn ---
 [ -f ~/.spawnrc ] && source ~/.spawnrc
+#
 
-# --- Fixes (nur Termux) ---
+# --- Fixes (Termux) ---
 if [ "$PLATFORM" = "termux" ]; then
   echo "Termux PREFIXE"
   ln -sf /system/lib64/liblog.so $PREFIX/lib/liblog.so 2>/dev/null || true
@@ -146,5 +148,5 @@ echo "Done"
 echo
 export PATH="$HOME/bin:$PATH"
 echo
-echo "====={☆}=====" 
-ulimit
+echo "====={☆}====="
+ulimit 
