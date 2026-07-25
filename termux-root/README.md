@@ -1,1 +1,1 @@
-*For documentation and information purposes only.
+For documentation and information purposes only. 
