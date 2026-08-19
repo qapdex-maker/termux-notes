@@ -14,8 +14,7 @@ pkg update && pkg upgrade -y
 pkg install x11-repo tur-repo -y
 pkg install vulkan-loader-generic -y 
 pkg install vulkan-headers -y
-pkg install shaderc -y
-pkg update && pkg upgrade -y
+pkg install shaderc -y && pkg update && pkg upgrade -y
 pkg install tur-repo -y
 pkg install x11-repo -y
 pkg install vkmark -y
@@ -26,10 +25,8 @@ pkg install termux-elf-cleaner -y
 pkg update && pkg upgrade -y
 pkg install shaderc spirv-tools -y
 pkg install spirv-tools -y
-pkg install spirv-headers -y
-pkg install switshader -y
+pkg install spirv-headers -y && pkg update && pkg upgrade -y
 pkg install mesa-vulkan-icd-swrast -y
-pkg install tur-repo -y
 pkg update -y
 pkg install mesa-vulkan-icd-freedreno -y
 
