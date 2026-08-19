@@ -1,18 +1,12 @@
 which glslc
 vulkaninfo --summary
-echo
 fastfetch
-echo
-echo
 export PATH=~/.npm-global/bin:$PATH
-
 export PATH=$PATH:$HOME/shaderc/build/glslc/
-
 # --- Android API-Level ---
 if command -v getprop >/dev/null 2>&1; then
     export ANDROID_API_LEVEL="$(getprop ro.build.version.sdk)"
 # --- Android Api-Level export
-
 # --- System Scan ---
   PLATFORM="termux"
 else
@@ -20,9 +14,7 @@ else
 fi
 
 echo "System: $PLATFORM"
-echo
 # ---
-
 # --- pnpm ---
 export PNPM_HOME="/data/data/com.termux/files/home/.local/share/pnpm"
 case ":$PATH:" in
@@ -31,11 +23,6 @@ case ":$PATH:" in
 esac
 
 # --- pnpm
-
-# >>> Codex installer >>>
-export PATH="/data/data/com.termux/files/home/.local/bin:$PATH"
-# <<< Codex installer <<<
-
 # --- uv ---
 export UV_PYTHON_PREFERENCE="only-system"
 export CRYPTOGRAPHY_DONT_BUILD_RUST=1
@@ -80,11 +67,9 @@ export MESA_SPIRV_LOG_LEVEL=warn
   echo $MESA_VK_WSI_PRESENT_MODE
 echo
 # --- Adreno Vulkan export
-
 echo "Done"
 #
 echo
 export PATH="$HOME/bin:$PATH"
-echo
-ulimit
 echo "====={☆}=====" 
+ulimit 
