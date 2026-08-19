@@ -64,12 +64,10 @@ export ZINK_DESCRIPTORS=lazy
 # export MESA_VK_WSI_PRESENT_MODE=mailbox
 export MESA_VK_WSI_PRESENT_MODE=immediate
 export MESA_SPIRV_LOG_LEVEL=warn
-  echo $MESA_VK_WSI_PRESENT_MODE
-echo
 # --- Adreno Vulkan export
 echo "Done"
 #
-echo
 export PATH="$HOME/bin:$PATH"
+#
 echo "====={☆}=====" 
-ulimit 
+ulimit
