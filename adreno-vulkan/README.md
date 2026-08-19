@@ -38,7 +38,8 @@ export EXECUTABLE_DISABLE_MTE=1
 glslc --version
 ```
 
-## Restart everything. Then: glslc --version && vulkaninfo --summary
+## Restart everything. Then: 
+```glslc --version && vulkaninfo --summary```
 
 *Expected Output:* `deviceName = Turnip Adreno (TM) XXX`.
 
@@ -62,7 +63,6 @@ export ZINK_DESCRIPTORS=lazy
 export MESA_VK_WSI_PRESENT_MODE=immediate
 export MESA_SPIRV_LOG_LEVEL=info
 export ASAN_OPTIONS=allow_user_segv_handler=1
-# --- Adreno Vulkan export
 ```
 
 ---
