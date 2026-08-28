@@ -14,7 +14,8 @@ pkg update && pkg upgrade -y
 pkg install x11-repo tur-repo -y
 pkg install vulkan-loader-generic -y 
 pkg install vulkan-headers -y
-pkg install shaderc -y && pkg update && pkg upgrade -y
+pkg update && pkg upgrade -y
+pkg install shaderc
 pkg install tur-repo -y
 pkg install x11-repo -y
 pkg install vkmark -y
