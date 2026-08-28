@@ -15,7 +15,6 @@ pkg install x11-repo tur-repo -y
 pkg install vulkan-loader-generic -y 
 pkg install vulkan-headers -y
 pkg update && pkg upgrade -y
-pkg install shaderc
 pkg install tur-repo -y
 pkg install x11-repo -y
 pkg install vkmark -y
@@ -30,6 +29,7 @@ pkg install spirv-headers -y && pkg update && pkg upgrade -y
 pkg install mesa-vulkan-icd-swrast -y
 pkg update -y
 pkg install mesa-vulkan-icd-freedreno -y
+pkg install shaderc -y
 
 find /system /vendor -name "*vk*.json" 2>/dev/null
 export VK_ICD_FILENAMES=$PREFIX/share/vulkan/icd.d/freedreno_icd.aarch64.json
