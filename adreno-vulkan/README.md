@@ -68,11 +68,17 @@ export ASAN_OPTIONS=allow_user_segv_handler=1
 ---
 
 ```
+2026.3
+1.4.350.1
+16.4.0
+
+Target: SPIR-V 1.0
+'DISPLAY' environment variable not set... skipping surface info
 ==========
 VULKANINFO
 ==========
 
-Vulkan Instance Version: 1.4.355
+Vulkan Instance Version: 1.4.361
 
 
 Instance Extensions: count = 25
@@ -121,4 +127,17 @@ GPU0:
         conformanceVersion = 1.2.7.1
         deviceUUID         = 91d356f6-9667-d5ab-ba50-f1ef4a6826ce
         driverUUID         = 9f34bcc0-96d4-b6c4-5010-ea16c686a97b
+GPU1:
+        apiVersion         = 1.4.335
+        driverVersion      = 26.0.6
+        vendorID           = 0x10005
+        deviceID           = 0x0000
+        deviceType         = PHYSICAL_DEVICE_TYPE_CPU
+        deviceName         = llvmpipe (LLVM 21.1.8, 128 bits)
+        driverID           = DRIVER_ID_MESA_LLVMPIPE
+        driverName         = llvmpipe
+        driverInfo         = Mesa 26.0.6 (LLVM 21.1.8)
+        conformanceVersion = 1.3.1.1
+        deviceUUID         = 6d657361-3236-2e30-2e36-000000000000
+        driverUUID         = 6c6c766d-7069-7065-5555-494400000000
 ```
