@@ -47,7 +47,7 @@ glslc --version
 ---
 
 ```
-# --- Adreno Vulkan ---
+# --- Performance Settings---
 export VK_ICD_FILENAMES="$PREFIX/share/vulkan/icd.d/freedreno_icd.aarch64.json"
 export GGML_VK_COMPUTE_OCCUPANCY_PRIORITY=high
 export GGML_VK_PREFER_HOST_MEMORY=1
@@ -64,6 +64,9 @@ export ZINK_DESCRIPTORS=lazy
 export MESA_VK_WSI_PRESENT_MODE=immediate
 export MESA_SPIRV_LOG_LEVEL=info
 export ASAN_OPTIONS=allow_user_segv_handler=1
+which glslc
+echo $MESA_VK_WSI_PRESENT_MODE
+ulimit
 ```
 
 ---
